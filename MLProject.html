@@ -1,3 +1,194 @@
-<p>
-    New file added , HTML for trying new codes.
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predictive Model Project Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      padding: 40px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 42px;
+    }
+
+    header p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 0;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 25px;
+      margin-bottom: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      color: #38bdf8;
+    }
+
+    code {
+      background: #334155;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #facc15;
+    }
+
+    pre {
+      background: #0f172a;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border-left: 4px solid #38bdf8;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111827;
+      color: #94a3b8;
+    }
+
+    .highlight {
+      color: #f472b6;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Predictive Movie Success Model</h1>
+    <p>Machine Learning Project Documentation & HTML Guide</p>
+  </header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>📌 Project Overview</h2>
+      <p>
+        This project builds a <span class="highlight">machine learning predictive model</span>
+        to classify whether a movie will become a <strong>Success</strong> or <strong>Failure</strong>.
+        The notebook performs data preprocessing, feature engineering, model training,
+        handling imbalanced data, evaluation, and feature importance analysis.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🛠 Technologies Used</h2>
+      <ul>
+        <li>Python</li>
+        <li>Pandas</li>
+        <li>NumPy</li>
+        <li>Scikit-learn</li>
+        <li>XGBoost</li>
+        <li>SMOTE</li>
+        <li>Matplotlib</li>
+        <li>Seaborn</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📂 Dataset Loading</h2>
+      <p>The dataset is loaded using Pandas:</p>
+
+      <pre><code>df = pd.read_excel("Full Table 4.xlsx")</code></pre>
+
+      <p>
+        The project reads movie-related data such as:
+      </p>
+
+      <ul>
+        <li>Movie title</li>
+        <li>Release date</li>
+        <li>Genres</li>
+        <li>Languages</li>
+        <li>Success/Failure label</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🧹 Data Preprocessing</h2>
+
+      <p>
+        The notebook converts release dates into datetime format and extracts useful features.
+      </p>
+
+      <pre><code>df['Release_Date'] = pd.to_datetime(df['Release_Date'])
+
+df['Release_Year'] = df['Release_Date'].dt.year
+df['Release_Month'] = df['Release_Date'].dt.month
+df['Release_Quarter'] = df['Release_Date'].dt.quarter</code></pre>
+
+      <p>
+        Genre and language columns are also cleaned and transformed into machine-readable format.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🎯 Target Variable</h2>
+
+      <p>
+        The target column is:
+      </p>
+
+      <pre><code>y = df['Success/Failure']</code></pre>
+
+      <p>
+        The model predicts whether a movie becomes successful or unsuccessful.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>📊 Feature Scaling & Train-Test Split</h2>
+
+      <pre><code>X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)</code></pre>
+
+      <p>
+        Standard scaling is applied to normalize numeric values before training.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🌲 Random Forest Model</h2>
+
+      <pre><code>rf_model = RandomForestClassifier(
+    n_estimators=300,
+    random_state=42
+)</code></pre>
+
+      <p>
+        Random Forest is used as one of the main classification algorithms.
+      </p>
+
+      <ul>
+        <li>Handles non-linear patterns</li>
+        <li>Works well on tabular data</li>
